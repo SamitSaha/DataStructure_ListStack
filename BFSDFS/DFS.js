@@ -63,6 +63,13 @@ class Graph {
         this.time++;
         finish[u] = this.time; // Record finish time
     }
+
+    // Print the adjacency list
+    printGraph() {
+        for (let [vertex, neighbors] of this.adjList) {
+            console.log(`${vertex}: [${neighbors.join(", ")}]`);
+        }
+    }
 }
 
 // Example Usage
@@ -83,5 +90,9 @@ graph.addEdge(1, 3);
 graph.addEdge(3, 4);
 graph.addEdge(4, 5);
 
+// Print the adjacency list
+graph.printGraph();
+
 // Perform DFS and display the results
 graph.dfs();
+

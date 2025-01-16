@@ -24,19 +24,19 @@ class Graph {
 
         // Initialize all vertices
         for (let i = 0; i < this.vertices; i++) {
-            color[i] = "WHITE";
+            color[i] = "WHITE"; // Unvisited -> white
             prev[i] = null;
             distance[i] = Infinity;
         }
 
         // Start from the source vertex
-        color[startVertex] = "GRAY";
+        color[startVertex] = "GRAY"; // visited but not finished -> GRAY
         distance[startVertex] = 0;
         queue.push(startVertex);
 
         while (queue.length > 0) {
-            const u = queue.shift();
-            const neighbors = this.adjList.get(u);
+            const u = queue.shift(); // removes and returns the first element of the queue
+            const neighbors = this.adjList.get(u); // retrieves the adjacency list (or neighbors) of the current vertex U from the graph's adjacency list
 
             for (const v of neighbors) {
                 if (color[v] === "WHITE") {
@@ -47,7 +47,7 @@ class Graph {
                 }
             }
 
-            color[u] = "BLACK";
+            color[u] = "BLACK"; // fully finished -> BLACK
         }
 
         return { distance, prev };
